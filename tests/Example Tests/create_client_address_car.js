@@ -1,8 +1,8 @@
 import { check, sleep } from 'k6';
 import { randomIntBetween } from "https://jslib.k6.io/k6-utils/1.1.0/index.js";
 import http from 'k6/http';
-import { set_request_header, response_status_check } from '../utils/utils.js';
-import { get_address_payload, get_car_payload, get_client_payload } from '../data/payloadData.js';
+import { set_request_header, response_status_check } from '../../utils/utils.js';
+import { get_address_payload, get_car_payload, get_client_payload } from '../../data/payloadData.js';
 
 export let options = { // Configuration of the test is held in options https://k6.io/docs/using-k6/options/
     vus: 1,
@@ -13,7 +13,7 @@ export let options = { // Configuration of the test is held in options https://k
     }
 };
 
-const base_url = "http://localhost:8081"
+const base_url = "https://localhost:44398/"
 
 export function create_client_address_car() { // add default as "export default function" to run test in isolation
 

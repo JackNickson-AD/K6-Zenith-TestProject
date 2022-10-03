@@ -12,7 +12,7 @@ export let options = { // Configuration of the test is held in options https://k
     }
 };
 
-const base_url = "http://localhost:8081"
+const base_url = "https://localhost:44398/"
 
 export function view_client_details() {
     var clients = http.get(base_url + '/api/client');

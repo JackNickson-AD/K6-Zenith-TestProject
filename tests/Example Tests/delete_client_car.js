@@ -12,7 +12,7 @@ export let options = { // Configuration of the test is held in options https://k
     }
 };
 
-const base_url = "http://localhost:8081"
+const base_url = "https://localhost:44398/"
 
 export function delete_client_car() { // add default as "export default function" to run test in isolation
     let car = http.get(base_url + '/api/car');

@@ -13,7 +13,7 @@ export let options = { // Configuration of the test is held in options https://k
     }
 };
 
-const base_url = "http://localhost:8081"
+const base_url = "https://localhost:44398/"
 
 export function update_client_address() { // add default as "export default function" to run test in isolation
 

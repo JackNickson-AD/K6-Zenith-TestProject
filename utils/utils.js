@@ -1,4 +1,5 @@
-import { check, fail } from 'k6';
+import { check, fail, sleep } from 'k6';
+import http from 'k6/http';
 
 export function get_random_client_id(res){
     var client_array = JSON.parse(res.body)
@@ -19,9 +20,10 @@ export function get_random_car(res){
 }
 
 export function set_request_header(){
+    
     return {
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json'
         },
     };
 }
@@ -35,3 +37,23 @@ export function response_status_check(res){
         fail('status code was *not* 200 actual status was ' + res.status);
     }
 }
+
+
+export function login_and_generate_authtoken(url, user, pass){
+    // Login Post Request
+    const res_sso = http.post(url, JSON.stringify({
+        username: user,
+        password: pass,
+      }), set_request_header());
+
+      console.log("Login SSO POST Status Code: " + res_sso.status); //response_status_check(res_sso)); 
+    
+      // Generate Auth Token 
+      const authToken = http.get('https://localhost:44353/api/sso/token').body;
+      check(authToken, { 'logged in successfully': () => authToken !== '' });
+      console.log("authtoken = " + authToken)
+      return authToken;
+}
+
+
+
