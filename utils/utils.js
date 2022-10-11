@@ -38,21 +38,25 @@ export function response_status_check(res){
     }
 }
 
-
-export function login_and_generate_authtoken(url, user, pass){
+export function login_and_generate_authtoken(user, pass){
     // Login Post Request
-    const res_sso = http.post(url, JSON.stringify({
+    const res_sso = http.post('https://localhost:44353/api/sso/authenticate', JSON.stringify({
         username: user,
         password: pass,
-      }), set_request_header());
+    }), set_request_header());
 
-      console.log("Login SSO POST Status Code: " + res_sso.status); //response_status_check(res_sso)); 
+    //console.log("Login SSO POST Status Code: " + res_sso.status); //response_status_check(res_sso)); 
+    //console.log("Login SSO POST Body: " + res_sso.body); //response_status_check(res_sso)); 
     
-      // Generate Auth Token 
-      const authToken = http.get('https://localhost:44353/api/sso/token').body;
-      check(authToken, { 'logged in successfully': () => authToken !== '' });
-      console.log("authtoken = " + authToken)
-      return authToken;
+
+
+    // Generate Token 
+    const token = http.get('https://localhost:44353/api/sso/token');
+    check(token, { 'logged in successfully': () => token !== '' });
+
+    //console.log("authtoken = " + JSON.parse(token.body)['accessToken'])
+
+    return JSON.parse(token.body)['accessToken'];
 }
 
 

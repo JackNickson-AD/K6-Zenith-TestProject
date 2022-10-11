@@ -1,0 +1,8 @@
+{
+    "baseUrl": "https://localhost:44398/",
+    "endpoints": {
+        "availabilitySummary": "api/fleetQueries/AvailabilitySummary",
+        "breakdownSummary": "api/fleetQueries/BreakdownSummary"
+    }
+
+}
