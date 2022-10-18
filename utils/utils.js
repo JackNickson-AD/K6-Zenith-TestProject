@@ -60,21 +60,19 @@ export function login_and_generate_authtoken(user, pass){
 }
 
 
-// Get config 
 export function getconfig() {
     try {
-        return JSON.parse(open(`../../config/${__ENV.CONFIG}`));
+        return JSON.parse(open(`../config/${__ENV.CONFIG}`));
     }
     catch (err) {
       throw new Error("Please set a config file using -e CONFIG=config/{appropriate-config-file}");
     }
   }
-  let config = getconfig();
   
   // Get Virtual User Credentials
   export function getcredentials() {
     try {
-      return JSON.parse(open(__ENV.CREDENTIALS));
+      return JSON.parse(open(`../data/${__ENV.CREDENTIALS}`));
     }
     catch (err) {
       throw new Error("Please set a credentials file using -e CREDENTIALS=data/{appropriate-credentials-file}");
