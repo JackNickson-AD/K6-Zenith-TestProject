@@ -13,15 +13,22 @@ export function response_status_check(res){
 
 export function login_and_generate_authtoken(user, pass){
     // Login Post Request
-    http.post('https://localhost:44353/api/sso/authenticate', JSON.stringify({
+    var sso_res = http.post('https://localhost:44353/api/sso/authenticate', JSON.stringify({
             username: user,
             password: pass,
         }), {headers: {'Content-Type': 'application/json'}}
     );
+    if (!check(sso_res, {'SSO status code MUST be 200': (res) => sso_res.status == 200})) 
+    {
+        fail('SSO status code was *not* 200');
+    }
 
     // Generate Token
     const token = http.get('https://localhost:44353/api/sso/token');
-    check(token, { 'logged in successfully': () => token !== '' });
+    if (!check(token, {'logged in successfully': () => token !== ''}))
+    {
+        fail('Token was not returned correctly');
+    }
 
     return JSON.parse(token.body)['accessToken'];
 }

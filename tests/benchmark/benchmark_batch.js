@@ -9,7 +9,7 @@ let availabilitySummary = config.endpoints.availabilitySummary;
 let breakdownSummary = config.endpoints.breakdownSummary;
 
 export const options = {
-    discardResponseBodies: true,
+    discardResponseBodies: false,
     scenarios: {
         contacts: {
         executor: 'per-vu-iterations',
