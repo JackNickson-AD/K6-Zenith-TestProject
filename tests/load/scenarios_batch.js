@@ -2,7 +2,6 @@ export { availability_summary } from '../benchmark/availability_summary.js';
 export { breakdown_summary } from '../benchmark/breakdown_summary.js';
 import http from 'k6/http';
 import { set_request_header, response_status_check, login_and_generate_authtoken } from '../../utils/utils.js';
-import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
 
 

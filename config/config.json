@@ -4,5 +4,5 @@
         "availabilitySummary": "api/fleetQueries/AvailabilitySummary",
         "breakdownSummary": "api/fleetQueries/BreakdownSummary"
     }
-
+    
 }

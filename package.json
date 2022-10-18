@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "k6:scenarios": "k6 run -e CONFIG=config/config.js -e CREDENTIALS=data/userCredentials.json tests/load/scenarios.js"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@types/k6": "^0.39.1",
+    "@types/node": "^18.8.4"
+  }
+}
