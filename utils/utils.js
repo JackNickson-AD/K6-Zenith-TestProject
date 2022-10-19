@@ -29,14 +29,13 @@ export function login_and_generate_authtoken(user, pass){
     {
         fail('Token was not returned correctly');
     }
-
     return JSON.parse(token.body)['accessToken'];
 }
 
 // Get config
 export function getConfig() {
     try {
-        return JSON.parse(open(`/config/${__ENV.CONFIG}`));
+        return JSON.parse(open(`../../config/${__ENV.CONFIG}`));
     }
     catch (err) {
         throw new Error("Please set a config file using -e CONFIG=config/{appropriate-config-file}");
@@ -58,12 +57,12 @@ let credentials = getCredentials();
 // Generate Auth Token
 export function getAuthToken() {
     let creds = credentials[Math.floor(Math.random() * credentials.length)];
-    return token = login_and_generate_authtoken( creds.username, creds.password )
+    return login_and_generate_authtoken( creds.username, creds.password )
 }
 
 // Set header and return as 'params'
 export function getHeader() {
-    return params = {
+    return {
         headers: {
         'Authorization': `Bearer ${getAuthToken()}`,
         'content-type': 'application/json'

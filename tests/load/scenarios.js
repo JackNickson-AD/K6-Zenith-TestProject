@@ -1,9 +1,10 @@
-export { availability_summary } from '../benchmark/availability_summary.js';
-export { breakdown_summary } from '../benchmark/breakdown_summary.js';
 import http from 'k6/http';
-import { set_request_header, response_status_check, login_and_generate_authtoken, getconfig, getAuthToken, getHeader, getcredentials,  } from '../../utils/utils.js';
+import { check, fail } from 'k6';
+import { set_request_header, response_status_check, login_and_generate_authtoken, getconfig, getAuthToken, getHeader, getcredentials, getConfig,  } from '../../utils/utils.js';
 import { htmlReport } from "https://raw.githubusercontent.com/benc-uk/k6-reporter/main/dist/bundle.js";
 
+
+let config = getConfig();
 
 // Declare URL variables using config file
 let baseUrl = config.baseUrl;
