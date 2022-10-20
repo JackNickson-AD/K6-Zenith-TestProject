@@ -1,48 +1,9 @@
-export { availability_summary } from '../benchmark/availability_summary.js';
-export { breakdown_summary } from '../benchmark/breakdown_summary.js';
 import http from 'k6/http';
-import { set_request_header, response_status_check, login_and_generate_authtoken } from '../../utils/utils.js';
+import { check, fail } from 'k6';
+import { set_request_header, response_status_check, login_and_generate_authtoken, getConfig, getCredentials, getHeader, getAuthToken } from '../../utils/utils.js';
 
 
-
-
-// Get config 
-function getconfig() {
-  try {
-    return JSON.parse(open(__ENV.CONFIG));
-  }
-  catch (err) {
-    throw new Error("Please set a config file using -e CONFIG=config/{appropriate-config-file}");
-  }
-}
-let config = getconfig();
-
-// Get Virtual User Credentials
-function getcredentials() {
-  try {
-    return JSON.parse(open(__ENV.CREDENTIALS));
-  }
-  catch (err) {
-    throw new Error("Please set a credentials file using -e CREDENTIALS=data/{appropriate-credentials-file}");
-  }
-}
-let credentials = getcredentials();
-
-// Generate Auth Token
-function getAuthToken() {
-  let creds = credentials[Math.floor(Math.random() * credentials.length)];
-  return token = login_and_generate_authtoken( creds.username, creds.password )
-}
-
-// Set header and return as 'params'
-function getHeader() {
-  return params = {
-      headers: {
-      'Authorization': `Bearer ${getAuthToken()}`,
-      'content-type': 'application/json'
-      },
-  };
-}
+let config = getConfig();
 
 // Declare URL variables using config file
 let baseUrl = config.baseUrl;
