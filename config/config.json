@@ -2,7 +2,12 @@
     "baseUrl": "https://localhost:44398/",
     "endpoints": {
         "availabilitySummary": "api/fleetQueries/AvailabilitySummary",
-        "breakdownSummary": "api/fleetQueries/BreakdownSummary"
+        "breakdownSummary": "api/fleetQueries/BreakdownSummary",
+        "defectSummary": "api/fleetQueries/DefectSummary",
+        "motByYearAndWeek": "api/fleetQueries/MotByYearAndWeek",
+        "inspectionByYearAndWeek": "api/fleetQueries/InspectionByYearAndWeek",
+        "inspectionsForWeek": "api/fleetQueries/InspectionsForWeek",
+        "invoiceForMonthSummary": "api/fleetQueries/InvoiceForMonthSummary",
+        "rechargeByYearAndWeek": "api/fleetQueries/RechargeByYearAndWeek"
     }
-    
 }

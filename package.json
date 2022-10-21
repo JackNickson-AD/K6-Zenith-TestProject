@@ -1,0 +1,8 @@
+{
+    "scripts": {
+      "scenarios:batch": "k6 run -e CONFIG=config.json -e CREDENTIALS=local.json tests/load/scenarios_batch.js",
+      "benchmark:single": "k6 run -e CONFIG=config.json -e CREDENTIALS=local.json tests/benchmark/benchmark_single.js",
+      "benchmark:batch": "k6 run -e CONFIG=config.json -e CREDENTIALS=local.json tests/benchmark/benchmark_batch.js"
+    }
+  }
+  

@@ -32,20 +32,20 @@ export function login_and_generate_authtoken(user, pass){
     return JSON.parse(token.body)['accessToken'];
 }
 
-
-export function getconfig() {
+// Get config
+export function getConfig() {
     try {
         return JSON.parse(open(`../../config/${__ENV.CONFIG}`));
     }
     catch (err) {
         throw new Error("Please set a config file using -e CONFIG=config/{appropriate-config-file}");
     }
-  }
-  
-  // Get Virtual User Credentials
-  export function getcredentials() {
+}
+
+// Get Virtual User Credentials
+export function getCredentials() {
     try {
-      return JSON.parse(open(`../data/${__ENV.CREDENTIALS}`));
+        return JSON.parse(open(`/data/${__ENV.CREDENTIALS}`));
     }
     catch (err) {
         throw new Error("Please set a credentials file using -e CREDENTIALS=data/{appropriate-credentials-file}");
